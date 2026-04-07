@@ -23,7 +23,7 @@ Topics covered include:
 ## Prerequisites
 
 - Python 3.7 or higher
-- Node.js and npm
+- Node.js 22 LTS or higher and npm
 
 ## Getting Started
 
