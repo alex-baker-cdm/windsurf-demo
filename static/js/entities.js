@@ -11,7 +11,11 @@ import {
     MERGE_COOLDOWN,
     MERGE_DISTANCE,
     MERGE_FORCE,
-    MERGE_START_FORCE
+    MERGE_START_FORCE,
+    BOOST_MULTIPLIER,
+    BOOST_DURATION,
+    BOOST_COOLDOWN,
+    BOOST_MASS_COST
 } from './config.js';
 
 const AI_NAMES = [
@@ -164,7 +168,33 @@ function updateCellMerging() {
     }
 }
 
+export function activateBoost() {
+    const now = Date.now();
+    if (gameState.boost.active || now < gameState.boost.cooldownEnd) return;
+
+    const totalScore = gameState.playerCells.reduce((sum, c) => sum + c.score, 0);
+    const minScoreAfterBoost = 30; // Don't boost if it would leave the player too small
+    if (totalScore * (1 - BOOST_MASS_COST) < minScoreAfterBoost) return;
+
+    gameState.boost.active = true;
+    gameState.boost.endTime = now + BOOST_DURATION;
+    gameState.boost.cooldownEnd = now + BOOST_DURATION + BOOST_COOLDOWN;
+
+    // Deduct mass cost from each cell proportionally
+    gameState.playerCells.forEach(cell => {
+        cell.score *= (1 - BOOST_MASS_COST);
+    });
+}
+
 export function updatePlayer() {
+    // Check if boost has expired
+    const now = Date.now();
+    if (gameState.boost.active && now >= gameState.boost.endTime) {
+        gameState.boost.active = false;
+    }
+
+    const boostFactor = gameState.boost.active ? BOOST_MULTIPLIER : 1;
+
     const dx = mouse.x - window.innerWidth / 2;
     const dy = mouse.y - window.innerHeight / 2;
     const distance = Math.sqrt(dx * dx + dy * dy);
@@ -178,7 +208,7 @@ export function updatePlayer() {
         // Update each cell
         gameState.playerCells.forEach(cell => {
             // Base speed is inversely proportional to cell size
-            const speed = 5 / (getSize(cell.score) / 20);
+            const speed = (5 / (getSize(cell.score) / 20)) * boostFactor;
 
             // Update velocity (with inertia)
             cell.velocityX = cell.velocityX * 0.9 + direction.x * speed * 0.1;

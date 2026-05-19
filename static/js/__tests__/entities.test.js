@@ -5,7 +5,12 @@ import { MIN_SPLIT_SCORE, MAX_PLAYER_CELLS } from '../config.js';
 // Mock gameState and mouse
 jest.mock('../gameState.js', () => ({
   gameState: {
-    playerCells: []
+    playerCells: [],
+    boost: {
+      active: false,
+      endTime: 0,
+      cooldownEnd: 0
+    }
   },
   mouse: { x: 0, y: 0 }
 }));

@@ -1,6 +1,6 @@
 import { gameState } from './gameState.js';
 import { getSize, calculateCenterOfMass } from './utils.js';
-import { WORLD_SIZE, COLORS, FOOD_SIZE } from './config.js';
+import { WORLD_SIZE, COLORS, FOOD_SIZE, BOOST_DURATION, BOOST_COOLDOWN } from './config.js';
 
 let canvas, ctx, minimapCanvas, minimapCtx, scoreElement, leaderboardContent;
 
@@ -60,6 +60,57 @@ function drawCellWithName(x, y, score, color, name) {
     }
 }
 
+function drawBoostIndicator() {
+    if (!ctx) return;
+
+    const now = Date.now();
+    const boost = gameState.boost;
+    const barWidth = 150;
+    const barHeight = 12;
+    const barX = (canvas.width - barWidth) / 2;
+    const barY = canvas.height - 40;
+
+    let fillRatio = 0;
+    let barColor = '#00ffff';
+    let label = 'BOOST [Space]';
+
+    if (boost.active) {
+        // Show remaining boost time
+        const remaining = Math.max(0, boost.endTime - now);
+        fillRatio = remaining / BOOST_DURATION;
+        barColor = '#00ffff';
+        label = 'BOOSTING';
+    } else if (now < boost.cooldownEnd) {
+        // Show cooldown progress
+        const cooldownRemaining = boost.cooldownEnd - now;
+        fillRatio = 1 - (cooldownRemaining / BOOST_COOLDOWN);
+        barColor = '#666';
+        label = 'COOLDOWN';
+    } else {
+        fillRatio = 1;
+        barColor = '#00ffff';
+    }
+
+    // Background
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+    ctx.fillRect(barX - 2, barY - 2, barWidth + 4, barHeight + 4);
+
+    // Fill
+    ctx.fillStyle = barColor;
+    ctx.fillRect(barX, barY, barWidth * fillRatio, barHeight);
+
+    // Border
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+    ctx.strokeRect(barX - 2, barY - 2, barWidth + 4, barHeight + 4);
+
+    // Label
+    ctx.font = 'bold 11px Arial';
+    ctx.fillStyle = 'white';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText(label, canvas.width / 2, barY - 5);
+}
+
 export function drawGame() {
     if (!ctx) return;
 
@@ -101,9 +152,21 @@ export function drawGame() {
         
         if (screenX >= -size && screenX <= canvas.width + size &&
             screenY >= -size && screenY <= canvas.height + size) {
-            drawCellWithName(screenX, screenY, cell.score, COLORS.PLAYER, gameState.playerName);
+            // Draw boost glow effect
+            if (gameState.boost.active) {
+                ctx.save();
+                ctx.shadowColor = '#00ffff';
+                ctx.shadowBlur = 20 + Math.sin(Date.now() / 100) * 8;
+                drawCellWithName(screenX, screenY, cell.score, '#00b3b3', gameState.playerName);
+                ctx.restore();
+            } else {
+                drawCellWithName(screenX, screenY, cell.score, COLORS.PLAYER, gameState.playerName);
+            }
         }
     });
+
+    // Draw boost indicator
+    drawBoostIndicator();
 
     // Update score display
     scoreElement.textContent = `Score: ${Math.floor(gameState.playerCells.reduce((sum, cell) => sum + cell.score, 0))}`;
