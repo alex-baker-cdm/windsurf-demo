@@ -19,6 +19,12 @@ export const MERGE_COOLDOWN = 10000;  // Time in ms before cells can merge
 export const MERGE_FORCE = 0.3;       // Strength of the merging force
 export const MERGE_START_FORCE = 0.1; // Initial attraction force (before merge cooldown)
 
+// Boost mechanics
+export const BOOST_MULTIPLIER = 2.5;    // Speed multiplier during boost
+export const BOOST_DURATION = 2000;     // Duration of boost in ms
+export const BOOST_COOLDOWN = 5000;     // Cooldown before boost can be used again in ms
+export const BOOST_MASS_COST = 0.1;     // Fraction of mass lost when boosting (10%)
+
 export const COLORS = {
     PLAYER: '#008080',  // Teal color
     MINIMAP: {
