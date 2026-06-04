@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "pre_user_prompt": [
+      {
+        "command": "echo 'Hook fired!'"
+      }
+    ],
+    "post_write_code": [
+      {
+        "command": "echo 'Post-write hook fired!'",
+        "show_output": true
+      }
+    ]
+  }
+}
