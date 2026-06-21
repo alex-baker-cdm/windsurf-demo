@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The History of NBCUniversal, Sky &amp; Peacock</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <!-- Navigation -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">NBCU<span class="logo-accent">|</span>History</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#timeline" data-section="timeline">Timeline</a></li>
+        <li><a href="#nbc" data-section="nbc">NBC</a></li>
+        <li><a href="#universal" data-section="universal">Universal</a></li>
+        <li><a href="#sky" data-section="sky">Sky</a></li>
+        <li><a href="#peacock" data-section="peacock">Peacock</a></li>
+        <li><a href="#stats" data-section="stats">By the Numbers</a></li>
+        <li><a href="#quiz" data-section="quiz">Quiz</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+        <span class="theme-icon">&#9790;</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+    <div class="hero-bg">
+      <div class="peacock-feathers">
+        <div class="feather feather-1"></div>
+        <div class="feather feather-2"></div>
+        <div class="feather feather-3"></div>
+        <div class="feather feather-4"></div>
+        <div class="feather feather-5"></div>
+        <div class="feather feather-6"></div>
+      </div>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <span class="title-line">The Story of</span>
+        <span class="title-main">NBCUniversal</span>
+        <span class="title-sub">Sky &amp; Peacock</span>
+      </h1>
+      <p class="hero-subtitle">A century of entertainment, innovation, and global media dominance</p>
+      <a href="#timeline" class="hero-cta">Explore the Journey <span class="cta-arrow">&darr;</span></a>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- Interactive Timeline -->
+  <section id="timeline" class="section timeline-section">
+    <div class="container">
+      <h2 class="section-title">Interactive Timeline</h2>
+      <p class="section-desc">Click on any event to learn more about pivotal moments in media history</p>
+
+      <div class="timeline-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="nbc">NBC</button>
+        <button class="filter-btn" data-filter="universal">Universal</button>
+        <button class="filter-btn" data-filter="sky">Sky</button>
+        <button class="filter-btn" data-filter="peacock">Peacock</button>
+        <button class="filter-btn" data-filter="merger">Mergers</button>
+      </div>
+
+      <div class="timeline" id="timeline-container">
+        <div class="timeline-line"></div>
+
+        <div class="timeline-item left" data-category="universal" data-year="1912">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">1912</span>
+            <h3>Universal Pictures Founded</h3>
+            <p>Carl Laemmle founds Universal Film Manufacturing Company, making it one of the oldest surviving Hollywood studios.</p>
+            <div class="timeline-detail" hidden>
+              <p>Universal was founded on April 30, 1912 by Carl Laemmle, Mark Dintenfass, Charles Baumann, Adam Kessel, Pat Powers, William Swanson, David Horsley, Robert H. Cochrane, and Jules Brulatour. The studio opened Universal City in 1915, a 230-acre facility in the San Fernando Valley that remains the world's largest film and television production facility.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item right" data-category="nbc" data-year="1926">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">1926</span>
+            <h3>NBC is Born</h3>
+            <p>The National Broadcasting Company launches as the first major broadcast network in the United States, created by RCA.</p>
+            <div class="timeline-detail" hidden>
+              <p>NBC was formed by the Radio Corporation of America (RCA) on November 15, 1926. It began with two semi-independent networks: the Red Network (entertainment) and the Blue Network (news). The Blue Network was later sold in 1943 and became ABC. NBC's first broadcast was a star-studded gala from the Waldorf Astoria Hotel in New York City.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item left" data-category="nbc" data-year="1941">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">1941</span>
+            <h3>NBC Television Begins</h3>
+            <p>NBC launches commercial television broadcasting, becoming one of the first TV networks in the world.</p>
+            <div class="timeline-detail" hidden>
+              <p>On July 1, 1941, NBC's New York station WNBT (now WNBC) began commercial television broadcasting with the first officially licensed commercial during a Dodgers game. The station broadcast to a limited audience of about 4,000 TV sets in the New York area.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item right" data-category="nbc" data-year="1953">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">1953</span>
+            <h3>Color Television Pioneer</h3>
+            <p>NBC broadcasts the first coast-to-coast color TV broadcast, revolutionizing the television industry forever.</p>
+            <div class="timeline-detail" hidden>
+              <p>NBC was at the forefront of color television, with parent company RCA developing the compatible color TV system. The famous NBC Peacock logo was created in 1956 specifically to showcase color broadcasting to viewers with color TV sets. The peacock's six colorful feathers demonstrated that a show was being broadcast "in living color."</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item left" data-category="nbc" data-year="1956">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">1956</span>
+            <h3>The Peacock Logo Debuts</h3>
+            <p>NBC introduces its iconic peacock logo with six colorful feathers to promote color TV programming.</p>
+            <div class="timeline-detail" hidden>
+              <p>The original NBC peacock featured eleven feathers in different colors. It was designed by John J. Graham to highlight NBC's color broadcasts. The logo went through several redesigns, with the current six-feathered version adopted in 1986. Each feather represents one of NBC's six divisions at the time.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item right" data-category="universal" data-year="1975">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">1975</span>
+            <h3>Jaws Changes Cinema</h3>
+            <p>Universal releases Jaws, directed by Steven Spielberg, creating the modern summer blockbuster phenomenon.</p>
+            <div class="timeline-detail" hidden>
+              <p>Jaws became the first film to earn over $100 million at the domestic box office, fundamentally changing how Hollywood marketed and distributed films. Universal pioneered the wide release strategy with a massive TV advertising campaign. This single film created the concept of the "summer blockbuster" and established Universal as a major force in cinema.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item left" data-category="merger" data-year="1986">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">1986</span>
+            <h3>GE Acquires NBC</h3>
+            <p>General Electric purchases RCA and its subsidiary NBC for $6.4 billion, beginning a new corporate era.</p>
+            <div class="timeline-detail" hidden>
+              <p>GE's acquisition of RCA (and thereby NBC) for $6.4 billion was one of the largest corporate mergers of the 1980s. Ironically, GE had been one of the original founders of RCA in 1919 but was forced to divest its stake in 1930 due to antitrust concerns. The acquisition reunited the two companies after 56 years.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item right" data-category="sky" data-year="1989">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">1989</span>
+            <h3>Sky Television Launches</h3>
+            <p>Rupert Murdoch launches Sky Television in the UK, pioneering satellite broadcasting in Europe.</p>
+            <div class="timeline-detail" hidden>
+              <p>Sky Television was launched on February 5, 1989 by Rupert Murdoch's News International. It offered four channels via the Astra satellite: Sky Channel, Sky News, Sky Movies, and Eurosport. The service competed directly with British Satellite Broadcasting (BSB), which launched a year later. Both services hemorrhaged money in a fierce battle for subscribers.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item left" data-category="sky" data-year="1990">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">1990</span>
+            <h3>BSkyB is Formed</h3>
+            <p>Sky Television and British Satellite Broadcasting merge to form BSkyB, ending the satellite TV war.</p>
+            <div class="timeline-detail" hidden>
+              <p>After both companies faced massive financial losses, Sky Television and BSB merged on November 2, 1990 to form British Sky Broadcasting (BSkyB). Though technically a merger, it was widely seen as a takeover by Sky, with Murdoch retaining control. The combined company went on to dominate UK pay television for decades.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item right" data-category="universal" data-year="1990">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">1990</span>
+            <h3>Universal Studios Japan Announced</h3>
+            <p>MCA/Universal expands its theme park empire with plans for international parks.</p>
+            <div class="timeline-detail" hidden>
+              <p>Following the success of Universal Studios Florida (opened 1990), Universal began expanding its theme park business internationally. The company developed Universal Studios Japan, which opened in Osaka in 2001, and later Universal Studios Beijing (2021). Today, Universal Parks & Resorts is one of the world's largest theme park operators.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item left" data-category="nbc" data-year="1994">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">1994</span>
+            <h3>Must See TV Era</h3>
+            <p>NBC dominates primetime with "Must See TV" Thursday nights featuring Friends, Seinfeld, and ER.</p>
+            <div class="timeline-detail" hidden>
+              <p>NBC's Thursday night lineup became a cultural phenomenon in the 1990s. The "Must See TV" branding, launched in 1993, packaged shows like Seinfeld, Friends, Frasier, and ER into appointment viewing. At its peak, NBC's Thursday night was the most profitable night in television history, with 30-second ad spots during these shows commanding premium prices.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item right" data-category="merger" data-year="2004">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">2004</span>
+            <h3>NBCUniversal is Created</h3>
+            <p>NBC and Vivendi Universal Entertainment merge, combining broadcast and film powerhouses into one entity.</p>
+            <div class="timeline-detail" hidden>
+              <p>On May 12, 2004, GE's NBC merged with Vivendi Universal Entertainment to form NBCUniversal. The deal created a media conglomerate spanning broadcast television, cable networks, film production, and theme parks. GE held 80% ownership while Vivendi retained 20%. This merger united the NBC broadcast network with Universal Studios and its vast content library.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item left" data-category="merger" data-year="2011">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">2011</span>
+            <h3>Comcast Takes Control</h3>
+            <p>Comcast acquires 51% of NBCUniversal from GE for $13.75 billion, reshaping the media landscape.</p>
+            <div class="timeline-detail" hidden>
+              <p>After an extensive regulatory review, the FCC approved Comcast's acquisition of a majority stake in NBCUniversal on January 18, 2011. The deal was valued at approximately $30 billion. In 2013, Comcast purchased the remaining 49% from GE for $16.7 billion, making NBCUniversal a wholly owned subsidiary. This transformed Comcast from a cable provider into a media-entertainment giant.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item right" data-category="sky" data-year="2014">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">2014</span>
+            <h3>BSkyB Becomes Sky</h3>
+            <p>BSkyB acquires Sky Italia and Sky Deutschland, rebranding the combined entity simply as "Sky."</p>
+            <div class="timeline-detail" hidden>
+              <p>In November 2014, BSkyB completed acquisitions of Sky Italia and Sky Deutschland from 21st Century Fox for approximately $9 billion, unifying the three Sky-branded companies under a single corporate entity. The new pan-European company, simply called Sky, served over 20 million customers across the UK, Ireland, Germany, Austria, and Italy.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item left" data-category="merger" data-year="2018">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">2018</span>
+            <h3>Comcast Acquires Sky</h3>
+            <p>Comcast wins a dramatic bidding war against Disney/Fox, acquiring Sky for $39 billion.</p>
+            <div class="timeline-detail" hidden>
+              <p>In September 2018, Comcast won a tense blind auction for Sky, outbidding 21st Century Fox (backed by Disney) with a bid of $39 billion ($22.57 per share). The acquisition gave Comcast/NBCUniversal a massive European footprint with 23 million subscribers. It was the largest ever European media deal and strategically positioned NBCUniversal as a truly global media company.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item right" data-category="peacock" data-year="2020">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">2020</span>
+            <h3>Peacock Launches</h3>
+            <p>NBCUniversal enters the streaming wars with Peacock, a multi-tiered streaming service.</p>
+            <div class="timeline-detail" hidden>
+              <p>Peacock launched on July 15, 2020, initially to Comcast Xfinity customers before expanding nationwide. Named after NBC's iconic peacock logo, the service offered three tiers: a free ad-supported tier, Peacock Premium ($4.99/month), and Peacock Premium Plus ($9.99/month, ad-free). It launched with a library of over 20,000 hours of content including classic NBC shows, Universal films, and original programming.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item left" data-category="peacock" data-year="2021">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">2021</span>
+            <h3>Tokyo Olympics on Peacock</h3>
+            <p>Peacock streams the Tokyo Olympics, providing over 7,000 hours of live coverage to millions.</p>
+            <div class="timeline-detail" hidden>
+              <p>The 2021 Tokyo Olympics (delayed from 2020 due to COVID-19) became a major showcase for Peacock. The platform streamed over 7,000 hours of live coverage, making it the most comprehensive Olympic streaming experience ever offered. The Games attracted 5.7 billion streaming minutes and helped Peacock gain significant subscriber momentum.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item right" data-category="peacock" data-year="2022">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">2022</span>
+            <h3>WWE Comes to Peacock</h3>
+            <p>Peacock becomes the exclusive streaming home for WWE content in the U.S., adding 3+ million subscribers.</p>
+            <div class="timeline-detail" hidden>
+              <p>In March 2021, WWE Network migrated exclusively to Peacock in the U.S. under a five-year deal reportedly worth over $1 billion. This brought WWE's passionate fanbase to Peacock, including live pay-per-view events like WrestleMania and all of WWE's vast library. By 2022, Peacock had surpassed 30 million monthly active accounts, with WWE being a major driver.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item left" data-category="peacock" data-year="2024">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">2024</span>
+            <h3>Paris Olympics &amp; Growth</h3>
+            <p>Peacock streams the Paris 2024 Olympics and surpasses 36 million subscribers, reaching profitability.</p>
+            <div class="timeline-detail" hidden>
+              <p>The Paris 2024 Olympics became Peacock's biggest event, with record-breaking streaming numbers. Peacock reached 36 million paid subscribers by Q3 2024 and achieved profitability for the first time. The platform's content strategy expanded with exclusive live sports, including NFL Sunday Night Football, Premier League matches, and original programming like Poker Face and Mrs. Davis.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+
+        <div class="timeline-item right" data-category="merger" data-year="2025">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <span class="timeline-year">2025</span>
+            <h3>The Future Unfolds</h3>
+            <p>NBCUniversal continues to shape global media with streaming innovation and potential Sky restructuring.</p>
+            <div class="timeline-detail" hidden>
+              <p>As of 2025, Comcast's NBCUniversal empire spans broadcast TV (NBC), cable networks (USA, Bravo, MSNBC, CNBC), film (Universal Pictures, DreamWorks, Illumination, Focus Features), streaming (Peacock), theme parks, and European operations via Sky. Discussions about potentially spinning off cable networks reflect the ongoing transformation of the media landscape in the streaming era.</p>
+            </div>
+            <button class="read-more-btn">Read More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NBC Section -->
+  <section id="nbc" class="section brand-section nbc-section">
+    <div class="container">
+      <div class="brand-header">
+        <div class="brand-icon nbc-icon">NBC</div>
+        <h2 class="section-title">National Broadcasting Company</h2>
+        <p class="section-desc">From radio waves to the digital age, NBC has been America's storyteller since 1926</p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="nbc-shows">Iconic Shows</button>
+        <button class="tab-btn" data-tab="nbc-firsts">Broadcast Firsts</button>
+        <button class="tab-btn" data-tab="nbc-news">News Legacy</button>
+      </div>
+
+      <div class="tab-content active" id="nbc-shows">
+        <div class="card-grid">
+          <div class="info-card" data-tilt>
+            <div class="card-era">1990s</div>
+            <h3>Seinfeld</h3>
+            <p>The "show about nothing" became the most-watched sitcom of the 1990s, redefining comedy television.</p>
+            <div class="card-stat">76 million viewers for the finale</div>
+          </div>
+          <div class="info-card" data-tilt>
+            <div class="card-era">1994&ndash;2004</div>
+            <h3>Friends</h3>
+            <p>Six friends in New York became a global cultural phenomenon that continues to attract new generations.</p>
+            <div class="card-stat">52.5 million viewers for the finale</div>
+          </div>
+          <div class="info-card" data-tilt>
+            <div class="card-era">2005&ndash;2013</div>
+            <h3>The Office</h3>
+            <p>A mockumentary that became the most-streamed show in America, finding new life on Peacock.</p>
+            <div class="card-stat">#1 most-streamed show on Peacock</div>
+          </div>
+          <div class="info-card" data-tilt>
+            <div class="card-era">1975&ndash;Present</div>
+            <h3>Saturday Night Live</h3>
+            <p>50 years of live comedy, launching careers from Belushi to Ferrell to countless others.</p>
+            <div class="card-stat">50+ seasons and counting</div>
+          </div>
+          <div class="info-card" data-tilt>
+            <div class="card-era">1994&ndash;2009</div>
+            <h3>ER</h3>
+            <p>George Clooney breakout hit that dominated Thursday nights and set new standards for medical dramas.</p>
+            <div class="card-stat">15 seasons, 331 episodes</div>
+          </div>
+          <div class="info-card" data-tilt>
+            <div class="card-era">2016&ndash;Present</div>
+            <h3>This Is Us</h3>
+            <p>A multi-timeline family drama that became NBC's biggest new show in over a decade.</p>
+            <div class="card-stat">10 million+ weekly viewers at peak</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="nbc-firsts">
+        <div class="firsts-list">
+          <div class="first-item">
+            <div class="first-year">1926</div>
+            <div class="first-text">
+              <h4>First Major Broadcast Network</h4>
+              <p>NBC became the first national radio network, connecting Americans coast to coast.</p>
+            </div>
+          </div>
+          <div class="first-item">
+            <div class="first-year">1941</div>
+            <div class="first-text">
+              <h4>First Commercial TV Broadcast</h4>
+              <p>WNBT aired the first FCC-licensed commercial TV broadcast in history.</p>
+            </div>
+          </div>
+          <div class="first-item">
+            <div class="first-year">1953</div>
+            <div class="first-text">
+              <h4>First Network Color Broadcast</h4>
+              <p>NBC pioneered color television, broadcasting in "living color" before any other network.</p>
+            </div>
+          </div>
+          <div class="first-item">
+            <div class="first-year">1962</div>
+            <div class="first-text">
+              <h4>First Satellite TV Broadcast</h4>
+              <p>NBC broadcast the first live TV signal via the Telstar satellite.</p>
+            </div>
+          </div>
+          <div class="first-item">
+            <div class="first-year">2000</div>
+            <div class="first-text">
+              <h4>First Major Streaming Partnership</h4>
+              <p>NBC partnered in creating Hulu, one of the first major streaming platforms.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="nbc-news">
+        <div class="news-grid">
+          <div class="news-card">
+            <h3>NBC Nightly News</h3>
+            <p>From Huntley-Brinkley to Lester Holt, NBC's evening newscast has been informing America since 1940. It consistently ranks as the #1 evening newscast.</p>
+          </div>
+          <div class="news-card">
+            <h3>Today Show</h3>
+            <p>Launched in 1952, the Today show pioneered the morning news format and remains one of the longest-running TV programs in history.</p>
+          </div>
+          <div class="news-card">
+            <h3>Meet the Press</h3>
+            <p>The longest-running television program in history, airing continuously since 1947. It remains the gold standard for political interview shows.</p>
+          </div>
+          <div class="news-card">
+            <h3>MSNBC &amp; CNBC</h3>
+            <p>NBC expanded into 24/7 cable news with MSNBC (1996) and business news with CNBC (1989), covering every angle of current events.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Universal Section -->
+  <section id="universal" class="section brand-section universal-section">
+    <div class="container">
+      <div class="brand-header">
+        <div class="brand-icon universal-icon">U</div>
+        <h2 class="section-title">Universal Pictures</h2>
+        <p class="section-desc">Over a century of cinematic magic, from silent films to billion-dollar franchises</p>
+      </div>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="uni-franchises">Mega Franchises</button>
+        <button class="tab-btn" data-tab="uni-classics">Classic Films</button>
+        <button class="tab-btn" data-tab="uni-parks">Theme Parks</button>
+      </div>
+
+      <div class="tab-content active" id="uni-franchises">
+        <div class="franchise-grid">
+          <div class="franchise-card">
+            <div class="franchise-revenue">$5B+</div>
+            <h3>Jurassic World</h3>
+            <p>From Spielberg's 1993 original to the modern trilogy, dinosaurs continue to dominate the box office.</p>
+          </div>
+          <div class="franchise-card">
+            <div class="franchise-revenue">$4.8B+</div>
+            <h3>Fast &amp; Furious</h3>
+            <p>What started as a street racing film became a global action franchise spanning 10+ films.</p>
+          </div>
+          <div class="franchise-card">
+            <div class="franchise-revenue">$4.6B+</div>
+            <h3>Despicable Me / Minions</h3>
+            <p>Illumination's animated franchise became one of the highest-grossing film series of all time.</p>
+          </div>
+          <div class="franchise-card">
+            <div class="franchise-revenue">$1.3B+</div>
+            <h3>Oppenheimer (2023)</h3>
+            <p>Christopher Nolan's masterpiece won 7 Academy Awards and proved prestige films can be blockbusters.</p>
+          </div>
+          <div class="franchise-card">
+            <div class="franchise-revenue">$3.3B+</div>
+            <h3>Shrek</h3>
+            <p>DreamWorks Animation's ogre fairy tale became a cultural touchstone and meme legend.</p>
+          </div>
+          <div class="franchise-card">
+            <div class="franchise-revenue">$2B+</div>
+            <h3>The Bourne Series</h3>
+            <p>Matt Damon's spy thriller redefined the action genre and influenced an entire generation of films.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="uni-classics">
+        <div class="classics-timeline">
+          <div class="classic-item">
+            <span class="classic-year">1931</span>
+            <strong>Dracula &amp; Frankenstein</strong> &mdash; Universal Monsters create the horror genre
+          </div>
+          <div class="classic-item">
+            <span class="classic-year">1960</span>
+            <strong>Spartacus</strong> &mdash; Kirk Douglas epic restores blacklisted writer Dalton Trumbo
+          </div>
+          <div class="classic-item">
+            <span class="classic-year">1975</span>
+            <strong>Jaws</strong> &mdash; Invents the summer blockbuster; first film to $100M
+          </div>
+          <div class="classic-item">
+            <span class="classic-year">1982</span>
+            <strong>E.T. the Extra-Terrestrial</strong> &mdash; Highest-grossing film of the 1980s
+          </div>
+          <div class="classic-item">
+            <span class="classic-year">1985</span>
+            <strong>Back to the Future</strong> &mdash; A timeless time-travel classic
+          </div>
+          <div class="classic-item">
+            <span class="classic-year">1993</span>
+            <strong>Schindler's List &amp; Jurassic Park</strong> &mdash; Spielberg releases two masterpieces in one year
+          </div>
+          <div class="classic-item">
+            <span class="classic-year">2001</span>
+            <strong>A Beautiful Mind</strong> &mdash; Wins 4 Academy Awards including Best Picture
+          </div>
+          <div class="classic-item">
+            <span class="classic-year">2017</span>
+            <strong>Get Out</strong> &mdash; Jordan Peele redefines horror; cultural milestone
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="uni-parks">
+        <div class="parks-grid">
+          <div class="park-card">
+            <div class="park-location">Orlando, FL</div>
+            <h3>Universal Orlando Resort</h3>
+            <p>Home to The Wizarding World of Harry Potter, Hagrid's Magical Creatures, and the upcoming Epic Universe (2025).</p>
+            <div class="park-stat">Opened: 1990 | 3 Theme Parks</div>
+          </div>
+          <div class="park-card">
+            <div class="park-location">Los Angeles, CA</div>
+            <h3>Universal Studios Hollywood</h3>
+            <p>The original studio tour turned theme park. Features the Studio Tour, Super Nintendo World, and more.</p>
+            <div class="park-stat">Opened: 1964 | Working Studio + Park</div>
+          </div>
+          <div class="park-card">
+            <div class="park-location">Osaka, Japan</div>
+            <h3>Universal Studios Japan</h3>
+            <p>Japan's premier theme park destination featuring Super Nintendo World and exclusive attractions.</p>
+            <div class="park-stat">Opened: 2001 | 14M+ annual visitors</div>
+          </div>
+          <div class="park-card">
+            <div class="park-location">Beijing, China</div>
+            <h3>Universal Beijing Resort</h3>
+            <p>The newest Universal resort, featuring seven themed lands and cutting-edge ride technology.</p>
+            <div class="park-stat">Opened: 2021 | Largest Universal park</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sky Section -->
+  <section id="sky" class="section brand-section sky-section">
+    <div class="container">
+      <div class="brand-header">
+        <div class="brand-icon sky-icon">SKY</div>
+        <h2 class="section-title">Sky</h2>
+        <p class="section-desc">Europe's leading entertainment company, connecting 23 million households across six countries</p>
+      </div>
+
+      <div class="sky-map-container">
+        <h3 class="map-title">Sky Across Europe</h3>
+        <div class="sky-countries">
+          <div class="country-card" data-country="uk">
+            <div class="country-flag">&#127468;&#127463;</div>
+            <h4>United Kingdom</h4>
+            <p>Sky's home market since 1989. Dominates pay-TV with Sky Sports, Sky Cinema, and Sky Glass.</p>
+            <div class="country-stat">~12 million subscribers</div>
+          </div>
+          <div class="country-card" data-country="ireland">
+            <div class="country-flag">&#127470;&#127466;</div>
+            <h4>Ireland</h4>
+            <p>Serving Irish audiences with localized content, GAA sports coverage, and Sky originals.</p>
+            <div class="country-stat">~1 million subscribers</div>
+          </div>
+          <div class="country-card" data-country="germany">
+            <div class="country-flag">&#127465;&#127466;</div>
+            <h4>Germany</h4>
+            <p>Home to Bundesliga football coverage and premium German-language entertainment.</p>
+            <div class="country-stat">~5 million subscribers</div>
+          </div>
+          <div class="country-card" data-country="austria">
+            <div class="country-flag">&#127462;&#127481;</div>
+            <h4>Austria</h4>
+            <p>Premium entertainment and sports in the Austrian market.</p>
+            <div class="country-stat">~0.5 million subscribers</div>
+          </div>
+          <div class="country-card" data-country="italy">
+            <div class="country-flag">&#127470;&#127481;</div>
+            <h4>Italy</h4>
+            <p>Major player in Italian television with Serie A football, cinema, and original productions.</p>
+            <div class="country-stat">~4.5 million subscribers</div>
+          </div>
+          <div class="country-card" data-country="switzerland">
+            <div class="country-flag">&#127464;&#127469;</div>
+            <h4>Switzerland</h4>
+            <p>Multi-language service covering German, French, and Italian-speaking regions.</p>
+            <div class="country-stat">~0.3 million subscribers</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sky-innovations">
+        <h3 class="innovations-title">Sky Innovations</h3>
+        <div class="innovation-cards">
+          <div class="innovation-card">
+            <div class="innovation-icon">&#128225;</div>
+            <h4>Sky Q</h4>
+            <p>Revolutionary set-top box with voice control, multi-room viewing, and seamless app integration.</p>
+          </div>
+          <div class="innovation-card">
+            <div class="innovation-icon">&#128250;</div>
+            <h4>Sky Glass</h4>
+            <p>The first TV with Sky built in &mdash; no dish, no box. A complete reimagining of how we watch TV.</p>
+          </div>
+          <div class="innovation-card">
+            <div class="innovation-icon">&#127911;</div>
+            <h4>Sky Originals</h4>
+            <p>Award-winning original content including Chernobyl, Gangs of London, and The Flight Attendant.</p>
+          </div>
+          <div class="innovation-card">
+            <div class="innovation-icon">&#9917;</div>
+            <h4>Sky Sports</h4>
+            <p>The home of Premier League, F1, cricket, and golf in the UK. Changed how sports are consumed.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Peacock Section -->
+  <section id="peacock" class="section brand-section peacock-section">
+    <div class="container">
+      <div class="brand-header">
+        <div class="brand-icon peacock-icon">&#9582;</div>
+        <h2 class="section-title">Peacock</h2>
+        <p class="section-desc">NBCUniversal's streaming future &mdash; bringing a century of content to the digital age</p>
+      </div>
+
+      <div class="peacock-features">
+        <div class="feature-card">
+          <div class="feature-number">20,000+</div>
+          <div class="feature-label">Hours of Content</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-number">36M+</div>
+          <div class="feature-label">Paid Subscribers</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-number">50+</div>
+          <div class="feature-label">Peacock Originals</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-number">2024</div>
+          <div class="feature-label">First Profitable Year</div>
+        </div>
+      </div>
+
+      <div class="peacock-content-tabs">
+        <h3>What's on Peacock</h3>
+        <div class="content-categories">
+          <button class="content-cat-btn active" data-cat="originals">Originals</button>
+          <button class="content-cat-btn" data-cat="sports">Live Sports</button>
+          <button class="content-cat-btn" data-cat="classics">NBC Classics</button>
+          <button class="content-cat-btn" data-cat="movies">Movies</button>
+        </div>
+
+        <div class="content-panel active" id="originals">
+          <div class="content-list">
+            <div class="content-item">
+              <strong>Poker Face</strong>
+              <span>Rian Johnson mystery series starring Natasha Lyonne</span>
+            </div>
+            <div class="content-item">
+              <strong>Bel-Air</strong>
+              <span>Dramatic reimagining of The Fresh Prince</span>
+            </div>
+            <div class="content-item">
+              <strong>Mrs. Davis</strong>
+              <span>Sci-fi comedy about a nun vs. artificial intelligence</span>
+            </div>
+            <div class="content-item">
+              <strong>The Traitors</strong>
+              <span>Hit reality competition hosted by Alan Cumming</span>
+            </div>
+            <div class="content-item">
+              <strong>Twisted Metal</strong>
+              <span>Post-apocalyptic action-comedy based on the PlayStation game</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-panel" id="sports">
+          <div class="content-list">
+            <div class="content-item">
+              <strong>NFL Sunday Night Football</strong>
+              <span>The #1 show on all of television</span>
+            </div>
+            <div class="content-item">
+              <strong>Premier League</strong>
+              <span>Live English football matches every matchday</span>
+            </div>
+            <div class="content-item">
+              <strong>Olympics</strong>
+              <span>Exclusive streaming home for Olympic Games coverage</span>
+            </div>
+            <div class="content-item">
+              <strong>WWE</strong>
+              <span>Exclusive U.S. streaming home for all WWE content</span>
+            </div>
+            <div class="content-item">
+              <strong>NASCAR &amp; IndyCar</strong>
+              <span>Motorsports coverage and race replays</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-panel" id="classics">
+          <div class="content-list">
+            <div class="content-item">
+              <strong>The Office</strong>
+              <span>The #1 most-streamed show on the platform</span>
+            </div>
+            <div class="content-item">
+              <strong>Parks and Recreation</strong>
+              <span>Leslie Knope's Pawnee adventures</span>
+            </div>
+            <div class="content-item">
+              <strong>Saturday Night Live</strong>
+              <span>Complete library of 50 seasons</span>
+            </div>
+            <div class="content-item">
+              <strong>Law &amp; Order Universe</strong>
+              <span>SVU, Criminal Intent, Organized Crime &mdash; the full franchise</span>
+            </div>
+            <div class="content-item">
+              <strong>Cheers &amp; Frasier</strong>
+              <span>Classic sitcoms including the Frasier revival</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-panel" id="movies">
+          <div class="content-list">
+            <div class="content-item">
+              <strong>Universal Theatrical Window</strong>
+              <span>New Universal films stream on Peacock as early as 45 days after theaters</span>
+            </div>
+            <div class="content-item">
+              <strong>Jurassic World Franchise</strong>
+              <span>All films from the dinosaur universe</span>
+            </div>
+            <div class="content-item">
+              <strong>DreamWorks Animation</strong>
+              <span>Shrek, How to Train Your Dragon, Kung Fu Panda</span>
+            </div>
+            <div class="content-item">
+              <strong>Illumination Films</strong>
+              <span>Despicable Me, Minions, Sing, The Secret Life of Pets</span>
+            </div>
+            <div class="content-item">
+              <strong>Focus Features</strong>
+              <span>Award-winning indie and prestige films</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section id="stats" class="section stats-section">
+    <div class="container">
+      <h2 class="section-title">By the Numbers</h2>
+      <p class="section-desc">The combined scale of the NBCUniversal / Sky / Peacock empire</p>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number" data-target="100">0</div>
+          <div class="stat-suffix">+ years</div>
+          <div class="stat-label">Combined history</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="200">0</div>
+          <div class="stat-suffix">+ countries</div>
+          <div class="stat-label">Global reach</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="36">0</div>
+          <div class="stat-suffix">M+ subscribers</div>
+          <div class="stat-label">Peacock paid subs</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="23">0</div>
+          <div class="stat-suffix">M households</div>
+          <div class="stat-label">Sky European homes</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="39">0</div>
+          <div class="stat-suffix">B acquisition</div>
+          <div class="stat-label">Comcast paid for Sky</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="4">0</div>
+          <div class="stat-suffix"> theme parks</div>
+          <div class="stat-label">Universal Parks worldwide</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="50">0</div>
+          <div class="stat-suffix">+ seasons</div>
+          <div class="stat-label">Saturday Night Live</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="7">0</div>
+          <div class="stat-suffix"> Oscars</div>
+          <div class="stat-label">Oppenheimer (2023)</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Section -->
+  <section id="quiz" class="section quiz-section">
+    <div class="container">
+      <h2 class="section-title">Test Your Knowledge</h2>
+      <p class="section-desc">How well do you know the history of NBCU, Sky, and Peacock?</p>
+
+      <div class="quiz-container" id="quizContainer">
+        <div class="quiz-progress">
+          <div class="quiz-progress-bar" id="quizProgress"></div>
+        </div>
+        <div class="quiz-question-counter" id="questionCounter">Question 1 of 8</div>
+
+        <div class="quiz-card" id="quizCard">
+          <!-- Questions populated by JS -->
+        </div>
+
+        <div class="quiz-result" id="quizResult" hidden>
+          <div class="result-score" id="resultScore"></div>
+          <div class="result-message" id="resultMessage"></div>
+          <button class="quiz-restart-btn" id="restartQuiz">Try Again</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="footer-logo">NBCU<span class="logo-accent">|</span>History</span>
+          <p>An interactive exploration of media history. Built with care.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#timeline">Timeline</a>
+          <a href="#nbc">NBC</a>
+          <a href="#universal">Universal</a>
+          <a href="#sky">Sky</a>
+          <a href="#peacock">Peacock</a>
+          <a href="#quiz">Quiz</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 NBCU History Project. This is an educational project and is not affiliated with NBCUniversal.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal for Timeline Details -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
