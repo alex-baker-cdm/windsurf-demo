@@ -11,7 +11,10 @@ import {
     MERGE_COOLDOWN,
     MERGE_DISTANCE,
     MERGE_FORCE,
-    MERGE_START_FORCE
+    MERGE_START_FORCE,
+    BOOST_SPEED_MULTIPLIER,
+    BOOST_DURATION,
+    BOOST_COOLDOWN
 } from './config.js';
 
 const AI_NAMES = [
@@ -164,7 +167,45 @@ function updateCellMerging() {
     }
 }
 
+function updateBoost() {
+    const now = Date.now();
+    const boost = gameState.boost;
+
+    if (boost.active) {
+        if (now - boost.startTime >= BOOST_DURATION) {
+            boost.active = false;
+            boost.cooldownEndTime = now + BOOST_COOLDOWN;
+        }
+    }
+
+    if (boost.keyHeld && !boost.active && now >= boost.cooldownEndTime) {
+        boost.active = true;
+        boost.startTime = now;
+    }
+}
+
+export function getBoostMultiplier() {
+    return gameState.boost.active ? BOOST_SPEED_MULTIPLIER : 1;
+}
+
+export function getBoostState() {
+    const now = Date.now();
+    const boost = gameState.boost;
+
+    if (boost.active) {
+        const elapsed = now - boost.startTime;
+        return { status: 'active', progress: 1 - elapsed / BOOST_DURATION };
+    }
+    if (now < boost.cooldownEndTime) {
+        const remaining = boost.cooldownEndTime - now;
+        return { status: 'cooldown', progress: 1 - remaining / BOOST_COOLDOWN };
+    }
+    return { status: 'ready', progress: 1 };
+}
+
 export function updatePlayer() {
+    updateBoost();
+
     const dx = mouse.x - window.innerWidth / 2;
     const dy = mouse.y - window.innerHeight / 2;
     const distance = Math.sqrt(dx * dx + dy * dy);
@@ -175,10 +216,12 @@ export function updatePlayer() {
             y: dy / distance
         };
 
+        const boostMultiplier = getBoostMultiplier();
+
         // Update each cell
         gameState.playerCells.forEach(cell => {
             // Base speed is inversely proportional to cell size
-            const speed = 5 / (getSize(cell.score) / 20);
+            const speed = (5 / (getSize(cell.score) / 20)) * boostMultiplier;
 
             // Update velocity (with inertia)
             cell.velocityX = cell.velocityX * 0.9 + direction.x * speed * 0.1;

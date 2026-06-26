@@ -1,6 +1,7 @@
 import { gameState } from './gameState.js';
 import { getSize, calculateCenterOfMass } from './utils.js';
 import { WORLD_SIZE, COLORS, FOOD_SIZE } from './config.js';
+import { getBoostState } from './entities.js';
 
 let canvas, ctx, minimapCanvas, minimapCtx, scoreElement, leaderboardContent;
 
@@ -107,6 +108,55 @@ export function drawGame() {
 
     // Update score display
     scoreElement.textContent = `Score: ${Math.floor(gameState.playerCells.reduce((sum, cell) => sum + cell.score, 0))}`;
+
+    // Draw boost indicator
+    drawBoostIndicator();
+}
+
+function drawBoostIndicator() {
+    const boostState = getBoostState();
+    const barWidth = 160;
+    const barHeight = 12;
+    const barX = (canvas.width - barWidth) / 2;
+    const barY = canvas.height - 40;
+
+    // Background
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+    ctx.beginPath();
+    ctx.roundRect(barX - 4, barY - 4, barWidth + 8, barHeight + 8, 6);
+    ctx.fill();
+
+    // Fill color based on state
+    let fillColor;
+    let fillWidth;
+    if (boostState.status === 'active') {
+        fillColor = '#00e5ff';
+        fillWidth = barWidth * boostState.progress;
+    } else if (boostState.status === 'cooldown') {
+        fillColor = '#ff9800';
+        fillWidth = barWidth * boostState.progress;
+    } else {
+        fillColor = '#4CAF50';
+        fillWidth = barWidth;
+    }
+
+    // Fill bar
+    if (fillWidth > 0) {
+        ctx.fillStyle = fillColor;
+        ctx.beginPath();
+        ctx.roundRect(barX, barY, fillWidth, barHeight, 4);
+        ctx.fill();
+    }
+
+    // Label
+    ctx.font = 'bold 10px Arial';
+    ctx.fillStyle = 'white';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    const label = boostState.status === 'active' ? 'BOOST'
+        : boostState.status === 'cooldown' ? 'COOLDOWN'
+        : 'BOOST READY';
+    ctx.fillText(label, barX + barWidth / 2, barY + barHeight / 2);
 }
 
 export function drawMinimap() {

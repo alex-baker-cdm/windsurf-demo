@@ -14,7 +14,13 @@ export const gameState = {
         y: 0
     },
     food: [],
-    aiPlayers: []
+    aiPlayers: [],
+    boost: {
+        active: false,
+        startTime: 0,
+        cooldownEndTime: 0,
+        keyHeld: false
+    }
 };
 
 export const mouse = { x: 0, y: 0 };
