@@ -1,4 +1,4 @@
-import { gameState, mouse } from './gameState.js';
+import { gameState, mouse, updateBoostState } from './gameState.js';
 import { getSize, getRandomPosition, calculateCenterOfMass, getDistance } from './utils.js';
 import { 
     WORLD_SIZE, 
@@ -11,7 +11,8 @@ import {
     MERGE_COOLDOWN,
     MERGE_DISTANCE,
     MERGE_FORCE,
-    MERGE_START_FORCE
+    MERGE_START_FORCE,
+    BOOST_SPEED_MULTIPLIER
 } from './config.js';
 
 const AI_NAMES = [
@@ -165,6 +166,9 @@ function updateCellMerging() {
 }
 
 export function updatePlayer() {
+    // Update boost timer
+    updateBoostState();
+
     const dx = mouse.x - window.innerWidth / 2;
     const dy = mouse.y - window.innerHeight / 2;
     const distance = Math.sqrt(dx * dx + dy * dy);
@@ -175,10 +179,12 @@ export function updatePlayer() {
             y: dy / distance
         };
 
+        const boostMultiplier = gameState.boost.active ? BOOST_SPEED_MULTIPLIER : 1;
+
         // Update each cell
         gameState.playerCells.forEach(cell => {
             // Base speed is inversely proportional to cell size
-            const speed = 5 / (getSize(cell.score) / 20);
+            const speed = (5 / (getSize(cell.score) / 20)) * boostMultiplier;
 
             // Update velocity (with inertia)
             cell.velocityX = cell.velocityX * 0.9 + direction.x * speed * 0.1;
