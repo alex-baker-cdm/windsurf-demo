@@ -1,6 +1,6 @@
-import { gameState } from './gameState.js';
+import { gameState, getBoostCooldownRemaining, getBoostDurationRemaining } from './gameState.js';
 import { getSize, calculateCenterOfMass } from './utils.js';
-import { WORLD_SIZE, COLORS, FOOD_SIZE } from './config.js';
+import { WORLD_SIZE, COLORS, FOOD_SIZE, BOOST_DURATION, BOOST_COOLDOWN } from './config.js';
 
 let canvas, ctx, minimapCanvas, minimapCtx, scoreElement, leaderboardContent;
 
@@ -107,6 +107,67 @@ export function drawGame() {
 
     // Update score display
     scoreElement.textContent = `Score: ${Math.floor(gameState.playerCells.reduce((sum, cell) => sum + cell.score, 0))}`;
+
+    // Draw boost indicator
+    drawBoostIndicator();
+}
+
+function drawBoostIndicator() {
+    if (!ctx) return;
+
+    const barWidth = 150;
+    const barHeight = 12;
+    const x = (canvas.width - barWidth) / 2;
+    const y = canvas.height - 40;
+    const cornerRadius = 6;
+
+    // Background
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
+    ctx.beginPath();
+    ctx.roundRect(x, y, barWidth, barHeight, cornerRadius);
+    ctx.fill();
+
+    if (gameState.boost.active) {
+        // Active boost: show remaining duration (green, draining)
+        const remaining = getBoostDurationRemaining();
+        const ratio = remaining / BOOST_DURATION;
+        ctx.fillStyle = '#4CAF50';
+        ctx.beginPath();
+        ctx.roundRect(x, y, barWidth * ratio, barHeight, cornerRadius);
+        ctx.fill();
+    } else {
+        const cooldownRemaining = getBoostCooldownRemaining();
+        if (cooldownRemaining > 0) {
+            // On cooldown: show progress filling up (yellow)
+            const ratio = 1 - cooldownRemaining / BOOST_COOLDOWN;
+            ctx.fillStyle = '#FFC107';
+            ctx.beginPath();
+            ctx.roundRect(x, y, barWidth * ratio, barHeight, cornerRadius);
+            ctx.fill();
+        } else {
+            // Ready: full bar (cyan)
+            ctx.fillStyle = '#00BCD4';
+            ctx.beginPath();
+            ctx.roundRect(x, y, barWidth, barHeight, cornerRadius);
+            ctx.fill();
+        }
+    }
+
+    // Label
+    ctx.font = 'bold 10px Arial';
+    ctx.fillStyle = 'white';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    const cooldownRemaining = getBoostCooldownRemaining();
+    let label;
+    if (gameState.boost.active) {
+        label = 'BOOST ACTIVE';
+    } else if (cooldownRemaining > 0) {
+        label = `BOOST ${(cooldownRemaining / 1000).toFixed(1)}s`;
+    } else {
+        label = 'BOOST READY [SPACE]';
+    }
+    ctx.fillText(label, x + barWidth / 2, y + barHeight / 2);
 }
 
 export function drawMinimap() {

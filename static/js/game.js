@@ -1,4 +1,4 @@
-import { gameState, mouse } from './gameState.js';
+import { gameState, mouse, activateBoost } from './gameState.js';
 import { initRenderer, resizeCanvas, drawGame, drawMinimap, updateLeaderboard } from './renderer.js';
 import { updatePlayer, updateAI, initEntities, handlePlayerSplit } from './entities.js';
 import { handleFoodCollisions, handlePlayerAICollisions, handleAIAICollisions, respawnEntities } from './collisions.js';
@@ -16,6 +16,14 @@ function setupInputHandlers() {
     // Mouse click for splitting
     canvas.addEventListener('click', (e) => {
         handlePlayerSplit();
+    });
+
+    // Spacebar for boost
+    window.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') {
+            e.preventDefault();
+            activateBoost();
+        }
     });
 
     // Window resize

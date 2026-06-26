@@ -1,13 +1,19 @@
 import { splitPlayerCell, handlePlayerSplit, updatePlayer } from '../entities.js';
 import { gameState, mouse } from '../gameState.js';
-import { MIN_SPLIT_SCORE, MAX_PLAYER_CELLS } from '../config.js';
+import { MIN_SPLIT_SCORE, MAX_PLAYER_CELLS, BOOST_SPEED_MULTIPLIER } from '../config.js';
 
 // Mock gameState and mouse
 jest.mock('../gameState.js', () => ({
   gameState: {
-    playerCells: []
+    playerCells: [],
+    boost: {
+      active: false,
+      startTime: 0,
+      lastUsedTime: 0
+    }
   },
-  mouse: { x: 0, y: 0 }
+  mouse: { x: 0, y: 0 },
+  updateBoostState: jest.fn()
 }));
 
 describe('splitPlayerCell', () => {
@@ -110,5 +116,57 @@ describe('updatePlayer', () => {
     const largeCellSpeed = Math.abs(gameState.playerCells[0].velocityX);
 
     expect(smallCellSpeed).toBeGreaterThan(largeCellSpeed);  // Smaller cells move faster
+  });
+
+  test('moves faster when boost is active', () => {
+    // Normal speed
+    const normalCell = { x: 100, y: 100, score: 100, velocityX: 0, velocityY: 0 };
+    gameState.playerCells = [normalCell];
+    gameState.boost.active = false;
+    mouse.x = 1000;
+    mouse.y = 0;
+    for (let i = 0; i < 10; i++) {
+      updatePlayer();
+    }
+    const normalSpeed = Math.abs(gameState.playerCells[0].velocityX);
+
+    // Boosted speed
+    const boostedCell = { x: 100, y: 100, score: 100, velocityX: 0, velocityY: 0 };
+    gameState.playerCells = [boostedCell];
+    gameState.boost.active = true;
+    mouse.x = 1000;
+    mouse.y = 0;
+    for (let i = 0; i < 10; i++) {
+      updatePlayer();
+    }
+    const boostedSpeed = Math.abs(gameState.playerCells[0].velocityX);
+
+    expect(boostedSpeed).toBeGreaterThan(normalSpeed);
+  });
+
+  test('boost does not affect movement when inactive', () => {
+    const cell1 = { x: 100, y: 100, score: 100, velocityX: 0, velocityY: 0 };
+    gameState.playerCells = [cell1];
+    gameState.boost.active = false;
+    mouse.x = 1000;
+    mouse.y = 0;
+
+    for (let i = 0; i < 5; i++) {
+      updatePlayer();
+    }
+    const speed1 = Math.abs(gameState.playerCells[0].velocityX);
+
+    const cell2 = { x: 100, y: 100, score: 100, velocityX: 0, velocityY: 0 };
+    gameState.playerCells = [cell2];
+    gameState.boost.active = false;
+    mouse.x = 1000;
+    mouse.y = 0;
+
+    for (let i = 0; i < 5; i++) {
+      updatePlayer();
+    }
+    const speed2 = Math.abs(gameState.playerCells[0].velocityX);
+
+    expect(speed1).toBeCloseTo(speed2, 5);
   });
 });
