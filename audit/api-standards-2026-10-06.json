@@ -1,0 +1,144 @@
+{
+  "repo": "alex-baker-cdm/windsurf-demo",
+  "surface": ["REST"],
+  "spec_present": false,
+  "auth_model": "none",
+  "classification": "training/demo app",
+  "findings": [
+    {
+      "id": "WSD-B-01",
+      "area": "B",
+      "severity": "high",
+      "title": "Flask debug mode enables Werkzeug debugger",
+      "file": "app.py",
+      "lines": "27",
+      "evidence": "app.run(debug=True); startup log shows 'Debugger is active! Debugger PIN: 753-725-197' and /console returns HTTP 200.",
+      "remediation": "Never enable debug via the run path: gate it on an env var (app.run(debug=os.environ.get('FLASK_DEBUG') == '1')) and deploy behind a real WSGI server (gunicorn/waitress) in production.",
+      "effort": "S"
+    },
+    {
+      "id": "WSD-B-02",
+      "area": "B",
+      "severity": "high",
+      "title": "No auth on state-mutating POST /update_player",
+      "file": "app.py",
+      "lines": "22-25",
+      "evidence": "curl -X POST /update_player -d '{\"x\":1,\"y\":2,\"id\":999}' -> 200 {\"status\":\"ok\"} with no credential required; no auth check exists anywhere in the app.",
+      "remediation": "Add an auth middleware (Flask before_request checking Bearer token or flask-login session) and object-level authorization binding player ids to the caller; document the unauthenticated posture if this stays a demo.",
+      "effort": "M"
+    },
+    {
+      "id": "WSD-A-01",
+      "area": "A",
+      "severity": "medium",
+      "title": "No API spec; endpoints are stubs returning {\"status\":\"ok\"}",
+      "file": "app.py",
+      "lines": "17-25",
+      "evidence": "No OpenAPI/GraphQL/proto file in repo; both routes return hardcoded {'status':'ok'} regardless of input; git log -- app.py shows 2 commits and no versioning.",
+      "remediation": "Write a minimal OpenAPI 3.x spec (or generate via flask-smorest/apispec) describing both routes and their schemas; version under /api/v1/ if the API will evolve.",
+      "effort": "M"
+    },
+    {
+      "id": "WSD-C-01",
+      "area": "C",
+      "severity": "medium",
+      "title": "No input validation on /update_player body",
+      "file": "app.py",
+      "lines": "22-25",
+      "evidence": "request.get_json() result is unused; arbitrary JSON ({\"x\":1,\"y\":2,\"id\":999}) returns 200. Verified with curl.",
+      "remediation": "Validate the body with a pydantic model or voluptuous/flask-expect schema (typed x/y coordinates, bounded values) returning 422 with field errors on mismatch.",
+      "effort": "S"
+    },
+    {
+      "id": "WSD-C-02",
+      "area": "C",
+      "severity": "low",
+      "title": "No request size limit",
+      "file": "app.py",
+      "lines": "5",
+      "evidence": "MAX_CONTENT_LENGTH unset; a ~5MB JSON body was accepted and parsed (400 only due to malformed JSON, not size).",
+      "remediation": "Set app.config['MAX_CONTENT_LENGTH'] (e.g. 16-64KB) so oversized bodies get an automatic 413.",
+      "effort": "S"
+    },
+    {
+      "id": "WSD-D-01",
+      "area": "D",
+      "severity": "medium",
+      "title": "Error responses are Werkzeug HTML, not JSON; inconsistent envelope",
+      "file": "app.py",
+      "lines": "whole file (no error handlers)",
+      "evidence": "Malformed JSON -> 400 text/html 'Failed to decode JSON object: Expecting value: line 1 column 1 (char 0)'; unknown route -> 404 text/html. Success is application/json. No request/correlation ids.",
+      "remediation": "Register JSON error handlers returning an RFC 9457 application/problem+json envelope (type, title, status, detail, instance) for 4xx/5xx, plus an X-Request-ID header echoed to logs.",
+      "effort": "S"
+    },
+    {
+      "id": "WSD-E-01",
+      "area": "E",
+      "severity": "low",
+      "title": "No application logging or health/readiness endpoint",
+      "file": "app.py",
+      "lines": "whole file",
+      "evidence": "Zero logging calls beyond Werkzeug access log; no /healthz, metrics, or tracing hooks; 5xx not alertable.",
+      "remediation": "Use Python logging with python-json-logger for structured logs, add a /healthz route, and propagate request ids.",
+      "effort": "S"
+    },
+    {
+      "id": "WSD-F-01",
+      "area": "F",
+      "severity": "medium",
+      "title": "Missing security headers",
+      "file": "app.py",
+      "lines": "whole file",
+      "evidence": "Response headers contain only Server/Date/Content-Type/Content-Length - no CSP, X-Frame-Options, X-Content-Type-Options, HSTS, or Referrer-Policy (verified via curl -si /).",
+      "remediation": "Add flask-talisman (or an after_request hook) with a baseline header set; configure CSP to match the static JS bundle.",
+      "effort": "S"
+    },
+    {
+      "id": "WSD-F-02",
+      "area": "F",
+      "severity": "high",
+      "title": "npm dependencies: 1 critical + 37 high vulnerabilities, fix available",
+      "file": "package-lock.json",
+      "lines": "whole file",
+      "evidence": "npm audit --audit-level=high -> 44 vulnerabilities (2 low, 4 moderate, 37 high, 1 critical), 'fix available via npm audit fix'; includes ws and @babel/plugin-transform-modules-systemjs arbitrary-code CVE. pip-audit on requirements.txt is clean.",
+      "remediation": "Run npm audit fix (and npm audit fix --force for the rest) and add npm audit --audit-level=high as a CI gate.",
+      "effort": "S"
+    },
+    {
+      "id": "WSD-F-03",
+      "area": "F",
+      "severity": "low",
+      "title": "No rate limiting on POST endpoint",
+      "file": "app.py",
+      "lines": "22-25",
+      "evidence": "No throttling on /update_player; unbounded POST rate accepted in testing.",
+      "remediation": "Add flask-limiter with a per-IP limit (e.g. 60/min) on mutating routes.",
+      "effort": "S"
+    },
+    {
+      "id": "WSD-G-01",
+      "area": "G",
+      "severity": "low",
+      "title": "No CI, contract tests, changelog, or deprecation policy",
+      "file": "repo root",
+      "lines": "n/a",
+      "evidence": "No .github/workflows, no spec linting, no changelog, no documented deploy/rollback path.",
+      "remediation": "Add a minimal GitHub Actions workflow running npm test, pip-audit/npm audit, and spectral lint once a spec exists.",
+      "effort": "M"
+    }
+  ],
+  "positives": [
+    "JSON routes consistently return application/json for success responses.",
+    "Correct method enforcement: GET /update_player returns 405 with Allow: POST, OPTIONS.",
+    ".gitignore covers venv/, .env*, node_modules/, coverage and build output - no secrets or environments committed.",
+    "No secrets, keys, or hardcoded credentials anywhere in code or config.",
+    "Python dependencies (Flask>=3.0.0, numpy>=1.26.0) are current and clean under pip-audit.",
+    "Real Jest test suite exists for static JS (npm test; 22/23 pass, one known pre-existing failure in test expectations).",
+    "Dev server binds localhost only by default - debug-mode exposure is not on all interfaces."
+  ],
+  "needs_confirmation": [
+    "Whether the app is ever deployed anywhere other than local dev - if so, WSD-B-01 (debug mode) and WSD-B-02 (no auth) escalate to critical.",
+    "Effective rate-limiting need once /update_player actually mutates state (currently a stub).",
+    "CORS policy intent - no Access-Control-* headers are sent (restrictive default fits same-origin use but is undocumented)."
+  ]
+}
